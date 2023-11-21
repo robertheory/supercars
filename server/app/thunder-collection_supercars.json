@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "supercars",
-    "dateExported": "2023-11-21T20:53:58.030Z",
+    "dateExported": "2023-11-21T22:55:07.139Z",
     "version": "1.1",
     "folders": [
         {
@@ -36,13 +36,17 @@
             "method": "POST",
             "sortNum": 15000,
             "created": "2023-11-21T20:43:53.483Z",
-            "modified": "2023-11-21T20:46:27.406Z",
+            "modified": "2023-11-21T22:53:21.137Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"name\": \"Tesla 2\",\n  \"brand\": \"Model S\",\n  \"model\": \"Electric\",\n  \"year\": 2023,\n  \"color\": \"Red\",\n  \"image\": \"tesla_model_s.jpg\",\n  \"price\": 80000.0\n}\n",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZXhwIjoxNzAwNjA4OTgyfQ.KL4GlUMcRHLjYFSjkckKdgH3TqT_tVEiJld7QS79fnM"
             },
             "tests": []
         },
@@ -69,13 +73,17 @@
             "method": "PUT",
             "sortNum": 30000,
             "created": "2023-11-21T20:14:03.507Z",
-            "modified": "2023-11-21T20:48:14.660Z",
+            "modified": "2023-11-21T22:54:26.801Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Updated Tesla\",\n  \"brand\": \"Updated Model S\",\n  \"year\": 2024,\n  \"price\": 85000.0\n}\n",
+                "raw": "{\n  \"name\": \"Updated Tesla\",\n  \"brand\": \"Updated Model S\",\n  \"year\": 2024,\n  \"price\": 85000.0,\n  \"color\": \"Red\",\n  \"image\": \"tesla_model_s.jpg\",\n  \"model\": \"Electric\"\n}\n",
                 "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZXhwIjoxNzAwNjA4OTgyfQ.KL4GlUMcRHLjYFSjkckKdgH3TqT_tVEiJld7QS79fnM"
             },
             "tests": []
         },
@@ -88,9 +96,41 @@
             "method": "DELETE",
             "sortNum": 40000,
             "created": "2023-11-21T20:14:08.741Z",
-            "modified": "2023-11-21T20:49:08.358Z",
+            "modified": "2023-11-21T22:54:46.079Z",
             "headers": [],
             "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZXhwIjoxNzAwNjA4OTgyfQ.KL4GlUMcRHLjYFSjkckKdgH3TqT_tVEiJld7QS79fnM"
+            },
+            "tests": []
+        },
+        {
+            "_id": "6d45bda2-6061-4e83-aa17-8697892f3423",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "",
+            "name": "LOGIN",
+            "url": "http://127.0.0.1:8000/token",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2023-11-21T22:07:26.311Z",
+            "modified": "2023-11-21T22:51:20.487Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "admin@mail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "admin"
+                    }
+                ]
+            },
             "tests": []
         }
     ]

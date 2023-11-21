@@ -7,3 +7,4 @@ databases==0.5.5
 python-dotenv
 aiosqlite
 dotenv
+python-multipart

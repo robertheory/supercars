@@ -1,39 +1,24 @@
-from pydantic import BaseModel
+from sqlalchemy import Column, Integer, String, Sequence, Float
+from .database import Base
 
 
-class UserCreate(BaseModel):
-    name: str
-    email: str
-    password: str
+class UserSchema(Base):
+    __tablename__ = "users"
 
-    class Config:
-        orm_mode = True
-        arbitrary_types_allowed = True
-
-
-class CarCreate(BaseModel):
-    name: str
-    brand: str
-    model: str
-    year: int
-    color: str
-    image: str
-    price: float
-
-    class Config:
-        orm_mode = True
-        arbitrary_types_allowed = True
+    id = Column(Integer, Sequence('user_id_seq'), primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
+    email = Column(String, unique=True, index=True)
+    password = Column(String)
 
 
-class CarUpdate(BaseModel):
-    name: str = None
-    brand: str = None
-    model: str = None
-    year: int = None
-    color: str = None
-    image: str = None
-    price: float = None
+class CarsSchema(Base):
+    __tablename__ = "cars"
 
-    class Config:
-        orm_mode = True
-        arbitrary_types_allowed = True
+    id = Column(Integer, Sequence('car_id_seq'), primary_key=True, index=True)
+    name = Column(String, index=True)
+    brand = Column(String, index=True)
+    model = Column(String, index=True)
+    year = Column(Integer, index=True)
+    color = Column(String, index=True)
+    image = Column(String, index=True)
+    price = Column(Float, index=True)
