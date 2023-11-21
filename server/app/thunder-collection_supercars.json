@@ -1,0 +1,97 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "supercars",
+    "dateExported": "2023-11-21T20:53:58.030Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "CARS",
+            "containerId": "",
+            "created": "2023-11-21T20:13:40.254Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8fc2e4fa-ca07-4a74-89d9-76a0575c0adb",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "GET CAR",
+            "url": "http://127.0.0.1:8000/cars/1",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-21T20:13:50.358Z",
+            "modified": "2023-11-21T20:46:06.465Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9da4f43b-00e2-434b-b359-65d4e13079bc",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "CREATE CAR",
+            "url": "http://127.0.0.1:8000/cars",
+            "method": "POST",
+            "sortNum": 15000,
+            "created": "2023-11-21T20:43:53.483Z",
+            "modified": "2023-11-21T20:46:27.406Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Tesla 2\",\n  \"brand\": \"Model S\",\n  \"model\": \"Electric\",\n  \"year\": 2023,\n  \"color\": \"Red\",\n  \"image\": \"tesla_model_s.jpg\",\n  \"price\": 80000.0\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d82f5157-9216-4bdb-8eee-15f2656abb52",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "LIST CARS",
+            "url": "http://127.0.0.1:8000/cars",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-21T20:13:57.104Z",
+            "modified": "2023-11-21T20:43:21.622Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "be25e07e-97d3-428a-b248-94bd934af16f",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "UPDATE CAR",
+            "url": "http://127.0.0.1:8000/cars/1",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-11-21T20:14:03.507Z",
+            "modified": "2023-11-21T20:48:14.660Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Updated Tesla\",\n  \"brand\": \"Updated Model S\",\n  \"year\": 2024,\n  \"price\": 85000.0\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "01f5983e-2f6f-48b1-9b62-bc13cc98cd26",
+            "colId": "f72299a0-a0ec-4672-a3fa-3453e9d55d98",
+            "containerId": "16225273-b091-444d-b58b-e96947c96108",
+            "name": "DELETE CAR",
+            "url": "http://127.0.0.1:8000/cars/1",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-11-21T20:14:08.741Z",
+            "modified": "2023-11-21T20:49:08.358Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
