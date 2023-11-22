@@ -1,7 +1,6 @@
 import { Car } from '@/intefaces';
-import { revalidateTag } from 'next/cache';
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export const listCars = async (): Promise<Car[]> => {
   const URI = `${API_URL}/cars`;
@@ -43,18 +42,19 @@ export const createCar = async (car: Omit<Car, 'id'>): Promise<Car> => {
   return newCar;
 };
 
-export const updateCar = async (car: Car): Promise<Car> => {
-  const response = await fetch(`${API_URL}/cars/${car.id}`, {
+export const updateCar = async (car: Car, token: string): Promise<Car> => {
+  const URI = `${API_URL}/cars/${car.id}`;
+
+  const response = await fetch(URI, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(car),
   });
-  const updatedCar = (await response.json()) as Car;
 
-  revalidateTag(`car-${car.id}-details`);
+  const updatedCar = (await response.json()) as Car;
 
   return updatedCar;
 };

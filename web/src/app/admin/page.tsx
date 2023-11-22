@@ -1,22 +1,12 @@
-'use client';
+import AdminHeader from '@/components/AdminHeader';
+import CarsTable from '@/components/CarsTable';
 
-import { signOut } from 'next-auth/react';
-
-const Admin = () => {
+const Admin = async () => {
   return (
-    <div>
-      <h1>Admin</h1>
+    <div className='w-full min-h-screen flex flex-col justify-start items-center gap-2'>
+      <AdminHeader />
 
-      <button
-        onClick={() =>
-          signOut({
-            callbackUrl: '/',
-            redirect: true,
-          })
-        }
-      >
-        Sign out
-      </button>
+      <CarsTable />
     </div>
   );
 };
