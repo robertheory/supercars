@@ -8,3 +8,8 @@ export interface Car {
   image: string;
   price: number;
 }
+
+export type CarFilterKey = Record<
+  keyof Omit<Car, 'id' | 'image' | 'price'>,
+  string
+>;

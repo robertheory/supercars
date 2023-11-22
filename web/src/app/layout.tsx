@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
@@ -22,11 +23,14 @@ export default function RootLayout({
     <html lang='pt-BR'>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'w-full min-h-screen font-sans antialiased bg-slate-200',
           fontSans.variable
         )}
       >
-        {children}
+        <Navbar />
+        <div className='w-[100%] h-fit flex flex-col justify-start items-center gap-2 mt-[100px]'>
+          {children}
+        </div>
       </body>
     </html>
   );
