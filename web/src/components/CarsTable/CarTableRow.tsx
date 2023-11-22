@@ -36,6 +36,8 @@ const CarTableRow = ({ car }: CarTableRowProps) => {
         <TableCell className='font-medium'>{car.id}</TableCell>
         <TableCell>{car.name}</TableCell>
         <TableCell>{car.brand}</TableCell>
+        <TableCell>{car.model}</TableCell>
+        <TableCell>{car.year}</TableCell>
         <TableCell className='text-right'>
           {new Intl.NumberFormat('pt-BR', {
             style: 'currency',

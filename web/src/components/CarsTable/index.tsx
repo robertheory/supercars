@@ -25,6 +25,8 @@ const CarsTable = async () => {
           <TableHead>ID</TableHead>
           <TableHead>Carro</TableHead>
           <TableHead>Marca</TableHead>
+          <TableHead>Modelo</TableHead>
+          <TableHead>Ano</TableHead>
           <TableHead className='text-right'>Preço</TableHead>
         </TableRow>
       </TableHeader>
