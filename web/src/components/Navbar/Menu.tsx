@@ -50,7 +50,6 @@ const Menu = () => {
             href={section.href}
             key={section.name}
             onClick={() => setIsMenuOpen(false)}
-            className=''
           >
             {section.name}
           </Link>

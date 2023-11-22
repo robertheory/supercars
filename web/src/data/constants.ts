@@ -5,7 +5,7 @@ export const menuItems = [
   },
   {
     name: 'Login',
-    href: '/login',
+    href: '/admin',
   },
 ];
 
