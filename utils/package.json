@@ -1,0 +1,13 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
