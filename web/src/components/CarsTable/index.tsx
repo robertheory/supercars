@@ -13,7 +13,11 @@ const CarsTable = async () => {
   const carList = await listCars();
 
   return (
-    <Table className='w-full max-w-[800px]'>
+    <Table
+      className='
+          w-full max-w-4xl mx-auto rounded-md overflow-hidden shadow-md bg-white
+        '
+    >
       <TableCaption>Lista de carros</TableCaption>
       <TableHeader>
         <TableRow>

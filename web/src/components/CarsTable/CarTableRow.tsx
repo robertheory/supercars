@@ -20,7 +20,12 @@ const CarTableRow = ({ car }: CarTableRowProps) => {
         <EditCarFormComponent car={car} />
       </DialogPortal>
 
-      <TableRowComponent>
+      <TableRowComponent
+        className='
+      hover:bg-gray-100 transition-colors duration-200 cursor-pointer
+        border-solid border-b border-gray-200
+      '
+      >
         <TableCell className='font-medium'>
           <DialogTrigger asChild>
             <Button variant='outline' type='button'>
