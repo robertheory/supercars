@@ -33,6 +33,25 @@ See the file `.env.example` for a list of environment variables that can be set.
 uvicorn app.main:app --reload
 ```
 
+### Login
+
+This project does not allow to create new users.
+The only user available is a default admin user with the following credentials:
+
+```txt
+username: admin@mail.com
+password: admin
+```
+
+To login to the API, send a POST request to the `/login` endpoint with the following JSON body:
+
+```json
+{
+  "username": "admin@mail.com",
+  "password": "admin"
+}
+```
+
 ## API Documentation
 
 ### Swagger UI

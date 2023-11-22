@@ -1,6 +1,14 @@
 # SuperCars System
 
-The SuperCars System is a comprehensive platform that consists of multiple components serving various purposes.
+SuperCars is a comprehensive system comprising a server and a web interface. This dynamic platform enables users to access and explore a curated list of registered supercars. Additionally, for administrators, the system provides robust tools for efficiently managing the car database.
+
+Key Features
+
+- Car Listing: Users can effortlessly browse through a curated list of supercars, accessing essential details and specifications.
+
+- Administrator Access: With appropriate administrator privileges, users can log in to access advanced functionalities for managing the cars in the system.
+
+- Efficient Management: The system provides administrators with powerful tools to efficiently manage and update car information, ensuring an up-to-date and accurate database.
 
 ## Components
 
@@ -8,7 +16,7 @@ The SuperCars System is a comprehensive platform that consists of multiple compo
 
 The server is the main component of the system. It is responsible for handling all the requests from the clients and responding to them accordingly. It is also responsible for handling the database and the business logic of the system.
 
-### [Client (Frontend)](/client/README.md)
+### [Client (Frontend)](/web/README.md)
 
 The client is the component that the users interact with. It is responsible for displaying the data to the users and sending requests to the server.
 
