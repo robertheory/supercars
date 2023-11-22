@@ -58,3 +58,15 @@ export const updateCar = async (car: Car, token: string): Promise<Car> => {
 
   return updatedCar;
 };
+
+export const deleteCar = async (id: string, token: string): Promise<void> => {
+  const URI = `${API_URL}/cars/${id}`;
+
+  await fetch(URI, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
