@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
@@ -27,10 +26,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Navbar />
-        <div className='w-[100%] h-fit flex flex-col justify-start items-center gap-2 mt-[100px]'>
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
