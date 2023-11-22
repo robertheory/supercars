@@ -25,11 +25,7 @@ const CarCard = ({ car }: CarCardProps) => {
           {car.brand} {car.name}
         </CardTitle>
         <CardDescription className='flex flex-col justify-start items-start gap-0'>
-          <div className='italic'>
-            {car.year} - {car.model}
-          </div>
-
-          <div>Cor {String(car.color).toUpperCase()}</div>
+          {car.year} - {car.model} - {String(car.color).toUpperCase()}
         </CardDescription>
       </CardHeader>
       <CardContent className='flex flex-col justify-start items-start gap-1'>
@@ -43,14 +39,7 @@ const CarCard = ({ car }: CarCardProps) => {
 
         <h3>Preço à vista</h3>
 
-        <p
-          className='
-          text-2xl
-          font-bold
-        '
-        >
-          {priceFormatted}
-        </p>
+        <p className='text-2xl font-bold'>{priceFormatted}</p>
       </CardContent>
     </Card>
   );
