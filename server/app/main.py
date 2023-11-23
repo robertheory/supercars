@@ -1,4 +1,4 @@
-from os import getenv
+from os import environ
 from sqlalchemy.orm import Session
 from .models import User, Token, TokenData, Car, CarCreate, CarUpdate
 from .schemas import UserSchema, CarsSchema
@@ -12,12 +12,13 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 load_dotenv()
 
-ACCESS_TOKEN_EXPIRE_MINUTES = int(getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
-SECRET_KEY = getenv("SECRET_KEY")
-ALGORITHM = getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(environ["ACCESS_TOKEN_EXPIRE_MINUTES"])
+SECRET_KEY = environ["SECRET_KEY"]
+ALGORITHM = environ["ALGORITHM"]
 
 app = FastAPI()
 
@@ -186,4 +187,4 @@ def delete_car(car_id: int, db: Session = Depends(get_db), current_user: User = 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "World", "path": "/"}
