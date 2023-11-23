@@ -1,9 +1,5 @@
 export const menuItems = [
   {
-    name: 'Comprar Carro',
-    href: '/seminovos',
-  },
-  {
     name: 'Login',
     href: '/admin',
   },
