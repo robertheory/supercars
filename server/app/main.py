@@ -187,4 +187,4 @@ def delete_car(car_id: int, db: Session = Depends(get_db), current_user: User = 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "World", "path": "/"}
