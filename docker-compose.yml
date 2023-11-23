@@ -9,20 +9,32 @@ services:
       - ./server/:/server/
     command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
     env_file:
-      - ./server/.env
+      - .env.server
     ports:
       - 8000:8000
+    networks:
+      - supercars-network
 
   web:
+    container_name: web
     build:
       context: ./web
       dockerfile: Dockerfile
+
+    # Set envrionment variables based on the .env file
+    env_file:
+      - .env.web
     volumes:
-      - ./web/:/web/
-    command: yarn start
+      - ./web/src:/app/src
+      - ./web/public:/app/public
+    restart: always
     ports:
       - 3000:3000
-    environment:
-      - NODE_ENV=production
+    networks:
+      - supercars-network
     depends_on:
       - server
+
+networks:
+  supercars-network:
+    external: true
