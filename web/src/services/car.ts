@@ -29,16 +29,21 @@ export const getCar = async (id: string): Promise<Car> => {
   return car;
 };
 
-export const createCar = async (car: Omit<Car, 'id'>): Promise<Car> => {
+export const createCar = async (
+  car: Omit<Car, 'id'>,
+  token: string
+): Promise<Car> => {
   const response = await fetch(`${API_URL}/cars`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(car),
   });
+
   const newCar = (await response.json()) as Car;
+
   return newCar;
 };
 
