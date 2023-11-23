@@ -1,7 +1,22 @@
 version: '3.8'
 
 services:
+  pgsql:
+    container_name: sc-pgsql
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: pgsql
+      POSTGRES_USER: pgsql
+      POSTGRES_PASSWORD: pgsql
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - supercars-network
+
   server:
+    container_name: sc-server
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -16,7 +31,7 @@ services:
       - supercars-network
 
   web:
-    container_name: web
+    container_name: sc-web
     build:
       context: ./web
       dockerfile: Dockerfile
