@@ -2,7 +2,7 @@ import { AccessDeniedError } from '@/errors';
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-const URL = process.env.NEXT_PUBLIC_API_URL;
+const URL = process.env.API_URL;
 
 if (!URL) throw new Error('NEXT_PUBLIC_API_URL is not defined');
 

@@ -1,7 +1,20 @@
 version: '3.8'
 
 services:
+  pgsql:
+    container_name: sc-pgsql
+    image: postgres:latest
+    env_file:
+      - .env.database
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - supercars-network
+
   server:
+    container_name: sc-server
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -14,9 +27,11 @@ services:
       - 8000:8000
     networks:
       - supercars-network
+    depends_on:
+      - pgsql
 
   web:
-    container_name: web
+    container_name: sc-web
     build:
       context: ./web
       dockerfile: Dockerfile

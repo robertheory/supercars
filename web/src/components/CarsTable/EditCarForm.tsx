@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/popover';
 import { useToast } from '@/components/ui/use-toast';
 import { Car } from '@/intefaces';
-import { deleteCar, updateCar } from '@/services/car';
+import { deleteCar } from '@/services/car';
 import { EditCarForm, editCarFormSchema } from '@/utils/validations';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PopoverClose } from '@radix-ui/react-popover';
@@ -32,9 +32,13 @@ import { useForm } from 'react-hook-form';
 
 type EditCarFormComponentProps = {
   car: Car;
+  handleSubmit: (data: EditCarForm) => void;
 };
 
-const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
+const EditCarFormComponent = ({
+  car,
+  handleSubmit,
+}: EditCarFormComponentProps) => {
   const { data: session } = useSession();
   const { toast } = useToast();
 
@@ -50,30 +54,6 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
       year: car.year,
     },
   });
-
-  const onSubmit = async (data: EditCarForm) => {
-    try {
-      const token = session!.user!.access_token;
-
-      const newCar = {
-        id: car.id,
-        ...data,
-      } as Car;
-
-      await updateCar(newCar, token);
-
-      toast({
-        title: 'Carro editado com sucesso!',
-        description: 'O carro foi editado com sucesso!',
-      });
-    } catch {
-      toast({
-        title: 'Erro!',
-        description: 'Ocorreu um erro ao editar o carro!',
-        variant: 'destructive',
-      });
-    }
-  };
 
   const handleDeleteCar = async () => {
     try {
@@ -100,15 +80,18 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
         <DialogTitle>Editar Carro #{car.id}</DialogTitle>
         <DialogDescription>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+            <form
+              onSubmit={form.handleSubmit(handleSubmit)}
+              className="space-y-4"
+            >
               <FormField
                 control={form.control}
-                name='name'
+                name="name"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Carro</FormLabel>
                     <FormControl>
-                      <Input placeholder='Carro...' {...field} />
+                      <Input placeholder="Carro..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -117,12 +100,12 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
               <FormField
                 control={form.control}
-                name='brand'
+                name="brand"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Marca</FormLabel>
                     <FormControl>
-                      <Input placeholder='Marca...' {...field} />
+                      <Input placeholder="Marca..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -131,30 +114,30 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
               <FormField
                 control={form.control}
-                name='model'
+                name="model"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Modelo</FormLabel>
                     <FormControl>
-                      <Input placeholder='Modelo...' {...field} />
+                      <Input placeholder="Modelo..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <div className='w-full flex flex-row justify-between gap-2'>
+              <div className="w-full flex flex-row justify-between gap-2">
                 <FormField
                   control={form.control}
-                  name='year'
+                  name="year"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Ano</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder='Ano...'
+                          placeholder="Ano..."
                           {...field}
-                          type='number'
+                          type="number"
                           onChange={(e) => {
                             field.onChange(Number(e.target.value));
                           }}
@@ -167,12 +150,12 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
                 <FormField
                   control={form.control}
-                  name='color'
+                  name="color"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Cor</FormLabel>
                       <FormControl>
-                        <Input placeholder='Cor...' {...field} />
+                        <Input placeholder="Cor..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -182,12 +165,12 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
               <FormField
                 control={form.control}
-                name='image'
+                name="image"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Foto</FormLabel>
                     <FormControl>
-                      <Input placeholder='Foto...' {...field} />
+                      <Input placeholder="Foto..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -196,15 +179,15 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
               <FormField
                 control={form.control}
-                name='price'
+                name="price"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Preço</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder='Preço...'
+                        placeholder="Preço..."
                         {...field}
-                        type='number'
+                        type="number"
                         onChange={(e) => {
                           field.onChange(Number(e.target.value));
                         }}
@@ -215,14 +198,14 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
                 )}
               />
 
-              <div className='w-full flex flex-row justify-between gap-2'>
-                <Button type='submit' variant='secondary'>
+              <div className="w-full flex flex-row justify-between gap-2">
+                <Button type="submit" variant="secondary">
                   Salvar
                 </Button>
 
                 <Button
-                  type='reset'
-                  variant='default'
+                  type="reset"
+                  variant="default"
                   onClick={() => form.reset()}
                 >
                   Reiniciar
@@ -232,25 +215,25 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
-                    type='button'
-                    variant='destructive'
-                    className='w-full'
+                    type="button"
+                    variant="destructive"
+                    className="w-full"
                   >
                     Deletar carro
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className='w-[350px] max-w-[90vw]'>
+                <PopoverContent className="w-[350px] max-w-[90vw]">
                   <h2>Tem certeza que deseja deletar este carro?</h2>
-                  <span className='font-bold text-lg'>
+                  <span className="font-bold text-lg">
                     #{car.id} - {car.name} {car.brand} {car.model} {car.year}
                   </span>
 
-                  <div className='w-full flex flex-row justify-between gap-2 mt-4'>
+                  <div className="w-full flex flex-row justify-between gap-2 mt-4">
                     <PopoverClose asChild>
                       <Button
-                        type='button'
-                        variant='outline'
-                        className='w-full'
+                        type="button"
+                        variant="outline"
+                        className="w-full"
                         onClick={() => handleDeleteCar()}
                       >
                         Deletar
@@ -259,9 +242,9 @@ const EditCarFormComponent = ({ car }: EditCarFormComponentProps) => {
 
                     <PopoverClose asChild>
                       <Button
-                        type='button'
-                        variant='default'
-                        className='w-full'
+                        type="button"
+                        variant="default"
+                        className="w-full"
                       >
                         Cancelar
                       </Button>

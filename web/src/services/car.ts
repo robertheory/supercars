@@ -1,8 +1,12 @@
 import { Car } from '@/intefaces';
 
-const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
+const SERVER_API_URL = process.env.API_URL;
+
+const CLIENT_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const listCars = async (): Promise<Car[]> => {
+  const API_URL = SERVER_API_URL || CLIENT_API_URL;
+
   const URI = `${API_URL}/cars`;
 
   const response = await fetch(URI, {
@@ -19,6 +23,8 @@ export const listCars = async (): Promise<Car[]> => {
 };
 
 export const getCar = async (id: string): Promise<Car> => {
+  const API_URL = SERVER_API_URL || CLIENT_API_URL;
+
   const response = await fetch(`${API_URL}/cars/${id}`, {
     next: {
       revalidate: 60 * 60 * 24, // 24 hours
@@ -29,21 +35,26 @@ export const getCar = async (id: string): Promise<Car> => {
   return car;
 };
 
-export const createCar = async (car: Omit<Car, 'id'>): Promise<Car> => {
-  const response = await fetch(`${API_URL}/cars`, {
+export const createCar = async (
+  car: Omit<Car, 'id'>,
+  token: string
+): Promise<Car> => {
+  const response = await fetch(`${CLIENT_API_URL}/cars`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(car),
   });
+
   const newCar = (await response.json()) as Car;
+
   return newCar;
 };
 
 export const updateCar = async (car: Car, token: string): Promise<Car> => {
-  const URI = `${API_URL}/cars/${car.id}`;
+  const URI = `${CLIENT_API_URL}/cars/${car.id}`;
 
   const response = await fetch(URI, {
     method: 'PUT',
@@ -60,7 +71,7 @@ export const updateCar = async (car: Car, token: string): Promise<Car> => {
 };
 
 export const deleteCar = async (id: string, token: string): Promise<void> => {
-  const URI = `${API_URL}/cars/${id}`;
+  const URI = `${CLIENT_API_URL}/cars/${id}`;
 
   await fetch(URI, {
     method: 'DELETE',
