@@ -12,3 +12,17 @@ services:
       - ./server/.env
     ports:
       - 8000:8000
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    volumes:
+      - ./web/:/web/
+    command: yarn start
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - server
